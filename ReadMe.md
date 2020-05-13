@@ -17,7 +17,7 @@ The project itself retains the existing developer experience of building and deb
 
 > Ensure that *Docker for Windows* is running and is set run Windows containers. 
 
-Assuming this code is downloaded to your machine, we first need the container image to be built. 
+Assuming this code is downloaded to your machine via a `git clone`, we first need the container image to be built. 
 
 1. Open a command prompt (e.g. Powershell) to the `WcfHelloWorld` folder
 2. Build the Docker image
@@ -67,6 +67,18 @@ Assuming this code is downloaded to your machine, we first need the container im
    ```
    http://localhost:51468/wcfhelloworld.svc?singleWsdl
    ```
+
+## Build and run without cloning
+
+Docker can accept a Git url to build from. To create the Docker image directly from this repository, we can use:
+
+```
+PS> docker build -t wcfdemofromgit https://github.com/matt-tester/dockerwcf.git#:wcfhelloworld
+```
+
+This will produce an image with the name `wcfdemofromgit`.
+
+> The url format on the end of the Git repo url, is specifying the folder to find the docker file using the format `#{branch}:{folder}`. To use `master`, we can leave it blank, hence `#:{folder}` will use the `master` branch.
 
 ## Managing containers
 
